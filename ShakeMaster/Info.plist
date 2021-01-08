@@ -4,8 +4,35 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleIconFile</key>
+	<string>logo.png</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIcons</key>
+	<dict>
+		<key>CFBundlePrimaryIcon</key>
+		<dict>
+			<key>CFBundleIconName</key>
+			<string></string>
+			<key>CFBundleIconFiles</key>
+			<array>
+				<string>logo.png</string>
+			</array>
+			<key>UIPrerenderedIcon</key>
+			<false/>
+		</dict>
+		<key>UINewsstandIcon</key>
+		<dict>
+			<key>CFBundleIconFiles</key>
+			<array>
+				<string>logo.png</string>
+			</array>
+			<key>UINewsstandBindingType</key>
+			<string>UINewsstandBindingTypeMagazine</string>
+			<key>UINewsstandBindingEdge</key>
+			<string>UINewsstandBindingEdgeLeft</string>
+		</dict>
+	</dict>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>

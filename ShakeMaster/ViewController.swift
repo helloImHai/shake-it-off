@@ -33,7 +33,9 @@ class ViewController: UIViewController {
         nameTextField.delegate = self
         groupIDTextField.delegate = self
 
+        nameTextView.isUserInteractionEnabled = false
         nameTextView.text = "Please input your name below"
+        nameTextView.isUserInteractionEnabled = false
         groupIDTextView.text = "Please input your Group ID below"
     }
     

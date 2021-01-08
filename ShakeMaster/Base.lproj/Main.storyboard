@@ -18,24 +18,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vlb-w2-nbu">
-                                <rect key="frame" x="181.5" y="404" width="51" height="30"/>
+                                <rect key="frame" x="181.5" y="444" width="51" height="30"/>
                                 <state key="normal" title="Update"/>
                                 <connections>
                                     <action selector="onUpdateButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uM9-gy-eCE"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your Group ID here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gUd-If-eGy">
-                                <rect key="frame" x="20" y="364" width="374" height="30"/>
+                                <rect key="frame" x="20" y="404" width="374" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your name here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ao0-aj-vXS">
-                                <rect key="frame" x="20" y="324" width="374" height="30"/>
+                                <rect key="frame" x="20" y="364" width="374" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Your name:" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="b4Z-4w-Wxy">
-                                <rect key="frame" x="20" y="224" width="374" height="30"/>
+                                <rect key="frame" x="20" y="264" width="374" height="30"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="hoj-by-ZeD" userLabel="height = 30"/>
@@ -45,17 +45,22 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Group ID:" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="v3e-UJ-qvl">
-                                <rect key="frame" x="20" y="264" width="374" height="30"/>
+                                <rect key="frame" x="20" y="304" width="374" height="30"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="D0n-u0-yqR">
+                                <rect key="frame" x="87" y="68" width="240" height="128"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="D0n-u0-yqR" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="0dG-TF-VrO"/>
                             <constraint firstItem="b4Z-4w-Wxy" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="0x1-5V-iUC"/>
+                            <constraint firstItem="D0n-u0-yqR" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="4Fg-ND-0md"/>
                             <constraint firstItem="ao0-aj-vXS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="93W-7x-NKv"/>
                             <constraint firstItem="v3e-UJ-qvl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="FTd-uN-JjR"/>
                             <constraint firstItem="b4Z-4w-Wxy" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Kek-8e-JRQ"/>
@@ -70,7 +75,7 @@
                             <constraint firstItem="v3e-UJ-qvl" firstAttribute="centerX" secondItem="b4Z-4w-Wxy" secondAttribute="centerX" id="fMJ-Cb-Arg"/>
                             <constraint firstItem="ao0-aj-vXS" firstAttribute="top" secondItem="v3e-UJ-qvl" secondAttribute="bottom" constant="30" id="fft-kj-Q9P"/>
                             <constraint firstItem="ao0-aj-vXS" firstAttribute="centerX" secondItem="v3e-UJ-qvl" secondAttribute="centerX" id="isa-PI-LfN"/>
-                            <constraint firstItem="b4Z-4w-Wxy" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="180" id="rhE-e6-ogx"/>
+                            <constraint firstItem="b4Z-4w-Wxy" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="220" id="rhE-e6-ogx"/>
                             <constraint firstItem="b4Z-4w-Wxy" firstAttribute="centerX" secondItem="Vlb-w2-nbu" secondAttribute="centerX" id="tVw-L3-w2F"/>
                             <constraint firstItem="v3e-UJ-qvl" firstAttribute="height" secondItem="b4Z-4w-Wxy" secondAttribute="height" id="wBe-Vi-mNj"/>
                         </constraints>
@@ -88,6 +93,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="logo" width="238" height="188"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
