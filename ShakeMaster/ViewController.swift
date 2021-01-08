@@ -11,7 +11,13 @@ class ViewController: UIViewController {
     var x: Double?
     var y: Double?
     var z: Double?
-    
+
+    @IBOutlet var nameTextView: UITextView!
+    @IBOutlet var groupIDTextView: UITextView!
+
+    @IBOutlet var nameTextField: UITextField!
+    @IBOutlet var groupIDTextField: UITextField!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -19,6 +25,12 @@ class ViewController: UIViewController {
         readyMessage()
         count = 0
         setupAccelerometer()
+
+        nameTextField.delegate = self
+        groupIDTextField.delegate = self
+
+        nameTextView.text = "Please input your name below"
+        groupIDTextView.text = "Please input your Group ID below"
     }
     
     func setupAccelerometer() {
@@ -73,11 +85,26 @@ class ViewController: UIViewController {
         return (dx * dx + dy * dy + dz * dz) / timeInterval
     }
 
-    @IBAction func sendPostRequestAction(_ sender: Any) {
-        let ac = UIAlertController(title: title, message: "You are sending an API request.", preferredStyle: .alert)
-        ac.addAction(UIAlertAction(title: "Continue", style: .default, handler: sendPostRequest))
+    @IBAction func onUpdateButtonClicked(_ sender: Any) {
+        let ac = UIAlertController(title: title, message: "Confirm update?", preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Yes!", style: .default, handler: updateFields))
         ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         present(ac, animated: true)
+    }
+
+    func updateFields(action: UIAlertAction) {
+        guard let name = nameTextField.text else { return }
+        guard let groupID = groupIDTextField.text else { return }
+
+        if name == "" || groupID == "" {
+            let ac = UIAlertController(title: title, message: "Both fields must be filled up!", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "Dismiss", style: .default))
+            present(ac, animated: true)
+            return
+        }
+
+        nameTextView.text = "Hello, \(name)!"
+        groupIDTextView.text = "Your current group ID is: \(groupID)"
     }
 
     func sendPostRequest(action: UIAlertAction!) {
@@ -121,6 +148,13 @@ class ViewController: UIViewController {
         task.resume()
 
         print("After task.resume()")
+    }
+}
+
+extension ViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }
 

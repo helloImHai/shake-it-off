@@ -18,27 +18,76 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vlb-w2-nbu">
-                                <rect key="frame" x="145.5" y="433" width="123" height="30"/>
-                                <state key="normal" title="Send API Request"/>
+                                <rect key="frame" x="181.5" y="496" width="51" height="30"/>
+                                <state key="normal" title="Update"/>
                                 <connections>
-                                    <action selector="sendPostRequestAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rt1-Z8-OmI"/>
+                                    <action selector="onUpdateButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uM9-gy-eCE"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your Group ID here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gUd-If-eGy">
+                                <rect key="frame" x="20" y="454" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your name here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ao0-aj-vXS">
+                                <rect key="frame" x="20" y="412" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Your name:" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="b4Z-4w-Wxy">
+                                <rect key="frame" x="20" y="316" width="374" height="33"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="33" id="hoj-by-ZeD"/>
+                                </constraints>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Group ID:" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="v3e-UJ-qvl">
+                                <rect key="frame" x="20" y="357" width="374" height="33"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Vlb-w2-nbu" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Ar4-lo-oYO"/>
-                            <constraint firstItem="Vlb-w2-nbu" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="M3H-TY-hFi"/>
+                            <constraint firstItem="ao0-aj-vXS" firstAttribute="trailing" secondItem="gUd-If-eGy" secondAttribute="trailing" id="2IF-KM-bpO"/>
+                            <constraint firstItem="ao0-aj-vXS" firstAttribute="top" secondItem="v3e-UJ-qvl" secondAttribute="bottom" constant="22" id="4u2-MP-UHi"/>
+                            <constraint firstItem="b4Z-4w-Wxy" firstAttribute="trailing" secondItem="v3e-UJ-qvl" secondAttribute="trailing" id="Bjn-D5-aHp"/>
+                            <constraint firstItem="ao0-aj-vXS" firstAttribute="leading" secondItem="gUd-If-eGy" secondAttribute="leading" id="C4Q-E3-ZYn"/>
+                            <constraint firstItem="b4Z-4w-Wxy" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="DjU-na-J6Z"/>
+                            <constraint firstItem="v3e-UJ-qvl" firstAttribute="top" secondItem="b4Z-4w-Wxy" secondAttribute="bottom" constant="8" symbolic="YES" id="Rm3-D1-ZzB"/>
+                            <constraint firstItem="b4Z-4w-Wxy" firstAttribute="leading" secondItem="v3e-UJ-qvl" secondAttribute="leading" id="f18-0J-GhN"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Vlb-w2-nbu" secondAttribute="bottom" constant="336" id="fRD-po-ODJ"/>
+                            <constraint firstItem="gUd-If-eGy" firstAttribute="centerX" secondItem="Vlb-w2-nbu" secondAttribute="centerX" id="kVz-M2-3hr"/>
+                            <constraint firstItem="Vlb-w2-nbu" firstAttribute="top" secondItem="gUd-If-eGy" secondAttribute="bottom" constant="8" symbolic="YES" id="m7i-rf-rCV"/>
+                            <constraint firstItem="v3e-UJ-qvl" firstAttribute="trailing" secondItem="ao0-aj-vXS" secondAttribute="trailing" id="nT5-ym-PFj"/>
+                            <constraint firstItem="b4Z-4w-Wxy" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="nsx-Uu-8gK"/>
+                            <constraint firstItem="gUd-If-eGy" firstAttribute="top" secondItem="ao0-aj-vXS" secondAttribute="bottom" constant="8" symbolic="YES" id="pfh-PA-jEB"/>
+                            <constraint firstItem="v3e-UJ-qvl" firstAttribute="leading" secondItem="ao0-aj-vXS" secondAttribute="leading" id="yLL-hz-CiX"/>
+                            <constraint firstItem="b4Z-4w-Wxy" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="272" id="ybQ-YA-1fv"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="groupIDTextField" destination="gUd-If-eGy" id="csP-Ee-wnm"/>
+                        <outlet property="groupIDTextView" destination="v3e-UJ-qvl" id="vxI-b9-CEb"/>
+                        <outlet property="nameTextField" destination="ao0-aj-vXS" id="IgU-TG-zzQ"/>
+                        <outlet property="nameTextView" destination="b4Z-4w-Wxy" id="FcM-Yp-JdF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="530" y="89"/>
+            <point key="canvasLocation" x="528.98550724637687" y="88.392857142857139"/>
         </scene>
     </scenes>
     <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
