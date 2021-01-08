@@ -6,6 +6,8 @@ class ViewController: UIViewController {
     let motionManager = CMMotionManager()
     let timeInterval = 0.1
     let magnitudeThreshold = 10.0
+    var name: String?
+    var groupID: String?
     var count: Int!
     var timer: Timer!
     var hasRecentlySentMessage: Bool!
@@ -109,8 +111,15 @@ class ViewController: UIViewController {
             return
         }
 
+        self.name = name
+        self.groupID = groupID
+
         nameTextView.text = "Hello, \(name)!"
         groupIDTextView.text = "Your current group ID is: \(groupID)"
+
+        // reset nameTextField and groupIDTextField
+        nameTextField.text = ""
+        groupIDTextField.text = ""
     }
 
     func sendPostRequest(action: UIAlertAction! = nil) {
@@ -122,8 +131,11 @@ class ViewController: UIViewController {
             return
         }
 
-        let queryItems = [URLQueryItem(name: "text", value: getText()),
-                          URLQueryItem(name: "chat_id", value: "-384824098")]
+        guard let name = self.name else { return }
+        guard let groupID = self.groupID else { return }
+
+        let queryItems = [URLQueryItem(name: "text", value: getText(name: name)),
+                          URLQueryItem(name: "chat_id", value: groupID)]
         urlComponents.queryItems = queryItems
 
         urlComponents.percentEncodedQuery = urlComponents.percentEncodedQuery?.replacingOccurrences(of: "+", with: "%2B")
@@ -156,8 +168,7 @@ class ViewController: UIViewController {
         print("After task.resume()")
     }
 
-    func getText() -> String {
-        let name = "Christian" // remove this line when name state is kept
+    func getText(name: String) -> String {
         let arr: [String] = [
             "Hey, can someone tell \(name) to stop shaking their legs? I'm sleeping heeeere!",
             "Awwww wittle baby \(name) can't stop shaking his legs :(",
