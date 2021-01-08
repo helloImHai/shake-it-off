@@ -3,10 +3,12 @@ import CoreMotion
 
 
 class ViewController: UIViewController {
-    var count: Int!
     let motionManager = CMMotionManager()
     let timeInterval = 0.1
+    let magnitudeThreshold = 10.0
+    var count: Int!
     var timer: Timer!
+    var hasRecentlySentMessage: Bool!
     
     var x: Double?
     var y: Double?
@@ -20,10 +22,10 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // Initialise
-        readyMessage()
         count = 0
+        hasRecentlySentMessage = false
         setupAccelerometer()
 
         nameTextField.delegate = self
@@ -34,17 +36,10 @@ class ViewController: UIViewController {
     }
     
     func setupAccelerometer() {
-        print("setting up accelerometer")
+        print("Setting up accelerometer")
         motionManager.startAccelerometerUpdates()
-        motionManager.startGyroUpdates()
-        motionManager.startMagnetometerUpdates()
-        motionManager.startDeviceMotionUpdates()
-        
+
         timer = Timer.scheduledTimer(timeInterval: timeInterval, target: self, selector: #selector(update), userInfo: nil, repeats: true)
-    }
-    
-    func readyMessage() {
-        print("Ready")
     }
     
     @objc
@@ -53,9 +48,20 @@ class ViewController: UIViewController {
             let x = accelerometerData.acceleration.x
             let y = accelerometerData.acceleration.y
             let z = accelerometerData.acceleration.z
-            if getMagnitude(x, y, z) > 10 {
+            if getMagnitude(x, y, z) > magnitudeThreshold
+                && !hasRecentlySentMessage  {
                 count += 1
-                print("shaking \(count!)")
+                hasRecentlySentMessage = true
+
+                // Enter code here to HUMILIATE!!
+                sendPostRequest()
+
+                // Timeout to send next message
+                DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+                    [weak self] in
+                    self?.hasRecentlySentMessage = false
+                }
+
             }
             setXYZ(x, y, z)
         } else {
@@ -107,7 +113,7 @@ class ViewController: UIViewController {
         groupIDTextView.text = "Your current group ID is: \(groupID)"
     }
 
-    func sendPostRequest(action: UIAlertAction!) {
+    func sendPostRequest(action: UIAlertAction! = nil) {
         let host = "api.telegram.org"
         let token = "1582533456:AAFswg2spaHuwD0x6O3pG3ajSx4wjBuQL4s"
 
@@ -116,7 +122,7 @@ class ViewController: UIViewController {
             return
         }
 
-        let queryItems = [URLQueryItem(name: "text", value: "Christian, stop shaking your legs"),
+        let queryItems = [URLQueryItem(name: "text", value: getText()),
                           URLQueryItem(name: "chat_id", value: "-384824098")]
         urlComponents.queryItems = queryItems
 
@@ -148,6 +154,17 @@ class ViewController: UIViewController {
         task.resume()
 
         print("After task.resume()")
+    }
+
+    func getText() -> String {
+        let name = "Christian" // remove this line when name state is kept
+        let arr: [String] = [
+            "Hey, can someone tell \(name) to stop shaking their legs? I'm sleeping heeeere!",
+            "Awwww wittle baby \(name) can't stop shaking his legs :(",
+            "P L E A S E - S T O P",
+            "Hmmmm... Not sure if it's an earthquake or \(name)'s thunder thighs!"
+        ]
+        return arr.randomElement()!
     }
 }
 
