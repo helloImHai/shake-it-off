@@ -26,9 +26,6 @@ class ViewController: UIViewController {
     func setupAccelerometer() {
         print("Setting up accelerometer")
         motionManager.startAccelerometerUpdates()
-        motionManager.startGyroUpdates()
-        motionManager.startMagnetometerUpdates()
-        motionManager.startDeviceMotionUpdates()
 
         timer = Timer.scheduledTimer(timeInterval: timeInterval, target: self, selector: #selector(update), userInfo: nil, repeats: true)
     }
